@@ -26,7 +26,7 @@ struct bm_gdp_entry {
 	int structSize;
 	int magicNumber;
 	unsigned int unk;
-	int flag;
+	int is_compressed;
 	int offset;
 	int size; // zlib
 	int rawSize;
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
 
 
 
-				if (entries[i].flag)
+				if (entries[i].is_compressed)
 				{
 					std::unique_ptr<char[]> uncompressedBuffer = std::make_unique<char[]>(entries[i].rawSize);
 
@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 						std::cout << "ERROR: ZLIB: Out of memory!" << std::endl;
 						return 1;
 					}
-					oFile.write(uncompressedBuffer.get(), entries[i].size);
+					oFile.write(uncompressedBuffer.get(), entries[i].rawSize);
 				}
 				else
 					oFile.write(dataBuff.get(), entries[i].size);
