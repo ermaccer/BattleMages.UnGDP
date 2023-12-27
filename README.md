@@ -1,8 +1,10 @@
 # BattleMages.UnGDP
-Extract GDP archives from both Battle Mages games.
+Extract and create GDP archives from both Battle Mages games.
 
 # Usage
 
-`ungdp <file>`
+`ungdp <file/folder>`
+
+Folder has to have data folder inside it to build correct archives!
 
 Or just drag'n'drop anything.
